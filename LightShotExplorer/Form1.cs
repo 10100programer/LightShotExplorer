@@ -35,7 +35,7 @@ namespace LightShotExplorer
             if (firstclick)
             {
                 PrintScreenNumber = new PrintScreenNumber(textBox1.Text);
-                textBox1.Enabled = false;
+                textBox1.ReadOnly = true;
                 firstclick = false;
             }
             
