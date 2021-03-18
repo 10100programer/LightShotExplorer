@@ -30,6 +30,32 @@ namespace LightShotExplorer
             }
         }
         bool firstclick = true;
+        private void Next()
+        {
+            if (firstclick)
+            {
+                PrintScreenNumber = new PrintScreenNumber(textBox1.Text);
+                textBox1.ReadOnly = true;
+                firstclick = false;
+            }
+
+            PrintScreenNumber.NextPage();
+            textBox1.Text = PrintScreenNumber.PageURL;
+            webBrowser1.Url = new Uri(textBox1.Text);
+        }
+        private void Last()
+        {
+            if (firstclick)
+            {
+                PrintScreenNumber = new PrintScreenNumber(textBox1.Text);
+                textBox1.ReadOnly = true;
+                firstclick = false;
+            }
+
+            PrintScreenNumber.LastPage();
+            textBox1.Text = PrintScreenNumber.PageURL;
+            webBrowser1.Url = new Uri(textBox1.Text);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (firstclick)
@@ -47,6 +73,29 @@ namespace LightShotExplorer
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 abx = new AboutBox1();
+            abx.ShowDialog();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            firstclick = true;
+            textBox1.ReadOnly = false;
+            textBox1.Text = string.Empty;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Next();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Last();
         }
     }
 }
